@@ -1,0 +1,11 @@
+{% extends 'basic.html' %}
+
+
+{% block body %}
+
+<h2>The name of list :</h2>
+    {% for n in name %}
+    {{n}} <br>
+    {% endfor %}
+
+{% endblock %}
