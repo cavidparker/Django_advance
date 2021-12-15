@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact
+from .models import Contact, Post
 
 
 
@@ -18,3 +18,17 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
         # fields = ['name', 'phone', 'content']
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['user','id','created_at','slug',]
+        widgets ={
+            'class_in': forms.CheckboxSelectMultiple(attrs={
+                'multiple': True,
+            }),
+            'subject': forms.CheckboxSelectMultiple(attrs={
+                'multiple': True,
+            })
+        }
