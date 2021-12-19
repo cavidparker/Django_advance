@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Contact, Post
+from .models import Contact, Post, Subject
 from .forms import ContactForm, PostForm
 from django.http.response import HttpResponse
 
@@ -28,6 +28,11 @@ def contact(request):
 def postview(request):
     post = Post.objects.all()
     return render(request, 'tuition/postview.html', {'post':post})
+
+
+def subview(request):
+    sub = Subject.objects.all()
+    return render(request, 'tuition/subjectview.html', {'sub':sub})
 
 
 def postcreate(request):
