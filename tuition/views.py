@@ -2,8 +2,27 @@ from django.shortcuts import render
 from .models import Contact, Post, Subject, Class_in
 from .forms import ContactForm, PostForm
 from django.http.response import HttpResponse
+from django.views import View
 
-# Create your views here.
+##### CLASS BASED VIEWS #####
+
+class ContactView(View):
+    form_class = ContactForm
+    template_name = 'contact.html'
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("successfully saved")
+        return render(request, self.template_name, {'form': form})
+
+
+
+##### FUNCTION BASED VIEWS #####
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

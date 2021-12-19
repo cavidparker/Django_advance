@@ -10,9 +10,18 @@ from .models import Contact, Post
 #     content = forms.CharField(label='Your Details', max_length=100)
 
 
+#### class based form #####
+
+class ContactFormthree(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+
+
+
+
+#### function based views use form #####
 #### modelform
-
-
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
