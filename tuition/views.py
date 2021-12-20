@@ -4,21 +4,53 @@ from .forms import ContactForm, PostForm
 from django.http.response import HttpResponse
 from django.views import View
 
-##### CLASS BASED VIEWS #####
+##### Class Based Form View #####
+from django.views.generic import FormView
+from django.urls import reverse_lazy
 
-class ContactView(View):
+class ContactView(FormView):
     form_class = ContactForm
     template_name = 'contact.html'
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+    # success_url = '/'
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse("successfully saved")
-        return render(request, self.template_name, {'form': form})
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('homeview')
+
+
+from django.views.generic import CreateView
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'tuition/postcreate.html'
+    # success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    def get_success_url(self):
+        return reverse_lazy('posts')
+
+##### CLASS BASED VIEWS #####
+# class ContactView(View):
+#     form_class = ContactForm
+#     template_name = 'contact.html'
+#     def get(self, request, *args, **kwargs):
+#         form = self.form_class()
+#         return render(request, self.template_name, {'form': form})
+
+#     def post(self, request, *args, **kwargs):
+#         form = self.form_class(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponse("successfully saved")
+#         return render(request, self.template_name, {'form': form})
 
 
 
