@@ -24,6 +24,16 @@ def home(request):
 #         print(content)
 #         obj = Contact(name=name, phone=phone, content=content)
 #         obj.save()
+#     return render(request, 'contact.html')
 
 
-#     return render(request, 'contact.html')     
+from django.views.generic import TemplateView
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name'] = ['John', 'Jane', 'Joe', 'max']
+        context['msg'] = 'welcome to home page'
+
+        return context
