@@ -74,12 +74,20 @@ def contact(request):
 
     return render(request, 'contact2.html',{'form':form})
 
-    
+
 ### Using list view to post the data
 from django.views.generic import ListView
 class PostListView(ListView):
     template_name = 'tuition/postlist.html'
-    model = Post
+    # model = Post
+    queryset = Post.objects.filter(user=2)
+    context_object_name = 'posts'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['posts'] = context.get('object_list')
+        context['msg'] = 'This is host list'
+        return context
 
 def postview(request):
     post = Post.objects.all()

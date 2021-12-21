@@ -1,10 +1,11 @@
 {% extends 'basic.html' %}
 
 {% block body %}
-{% for p in object_list %}
-{{p.title}} : <a href="/tuition/details/{{p.slug}}">Details</a> <hr>
-{{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
-{{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr>
+{{msg}} <br>
+{% for p in posts %}
+{{p.title}} by {{p.user.username}}: <a href="/tuition/details/{{p.slug}}">Details</a> <hr>
+<!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
+{{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
 
 
 
