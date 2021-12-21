@@ -77,4 +77,4 @@ class Post(models.Model):
             img.save(self.image.path)
 
     def __str__(self):
-        return self.title + "by" + self.user.username
+        return self.title + " by " + self.user.username

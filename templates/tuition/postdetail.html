@@ -1,0 +1,14 @@
+{% extends 'basic.html' %} {% block body %}
+<h1>Post Detail</h1>
+
+Title = {{object.title}} <br>
+
+Subject = {% for s in object.subject.all %}
+{{s.name}}, 
+{% endfor %}<br>
+Class = {% for c in object.class_in.all %} 
+{{c.name}}, 
+{% endfor %}<br>
+
+category = {{object.category}} <br>
+{% endblock %}

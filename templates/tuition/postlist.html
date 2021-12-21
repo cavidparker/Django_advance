@@ -3,7 +3,7 @@
 {% block body %}
 {{msg}} <br>
 {% for p in posts %}
-{{p.title}} by {{p.user.username}}: <a href="/tuition/details/{{p.slug}}">Details</a> <hr>
+{{p.title}} by {{p.user.username}}: <a href="/tuition/postdetail/{{p.id}}">Details</a> <hr>
 <!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
 {{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
 
