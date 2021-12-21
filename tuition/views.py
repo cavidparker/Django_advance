@@ -74,7 +74,12 @@ def contact(request):
 
     return render(request, 'contact2.html',{'form':form})
 
-
+    
+### Using list view to post the data
+from django.views.generic import ListView
+class PostListView(ListView):
+    template_name = 'tuition/postlist.html'
+    model = Post
 
 def postview(request):
     post = Post.objects.all()
