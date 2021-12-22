@@ -82,8 +82,14 @@ class PostDetailView(DetailView):
     template_name = 'tuition/postdetail.html'
     context_object_name = 'post'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['post'] = context.get('object_2')
+        context['msg'] = 'This is post detail'
+        return context
 
-### Using listview to show the data
+
+### Using listview to display the post
 from django.views.generic import ListView
 class PostListView(ListView):
     template_name = 'tuition/postlist.html'
@@ -94,7 +100,7 @@ class PostListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['posts'] = context.get('object_list')
-        context['msg'] = 'This is host list'
+        context['msg'] = 'This is post list'
         return context
 
 def postview(request):
