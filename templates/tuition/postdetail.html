@@ -1,18 +1,46 @@
-{% extends 'basic.html' %} 
+{% extends 'basic.html' %}
+
+
 {% block body %}
-{{msg}}<br>
-<h1>Post Detail</h1>
+<div class="container">
+    <h1 class="text-center">Post Detail</h1>
+    <div class="col-md-6">
+        <img src="{{object.image.url}}" alt="" style="width:150px; height:150px;" class="rounded-circle img-thumbnail">
+    </div>
+    <!-- <div class="col-md-6 offset-md-2"> -->
+    <div class="col-md-6 offset-md-3 p-5 border">
+
+        <!-- {{msg}}<br> -->
+        Title = {{object.title}} <br>
+
+        {% if request.user == object.user %}
+        <a href="/tuition/edit/{{object.id}}">Edit</a><br>
+        {% endif %}
+
+
+        Email = {{object.email}} <br>
+        Details = {{object.details}} <br>
+        Available = {% if object.available %} Yes {% else %} No{% endif %} <br>
+
+        Subject = {% for s in object.subject.all %}
+        {{s.name}},
+        {% endfor %}<br>
+        Class = {% for c in object.class_in.all %}
+        {{c.name}},
+        {% endfor %}<br>
+
+
+        Category = {{object.category}} <br>
+        Salary = {{object.salary}} <br>
+        Medium = {{object.medium}} <br>
+        Created_at = {{object.created_at}} <br>
 
 
 
-Title = {{object.title}} <br>
 
-Subject = {% for s in object.subject.all %}
-{{s.name}}, 
-{% endfor %}<br>
-Class = {% for c in object.class_in.all %} 
-{{c.name}}, 
-{% endfor %}<br>
 
-category = {{object.category}} <br>
+    </div>
+</div>
+
+
 {% endblock %}

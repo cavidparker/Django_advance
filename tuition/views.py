@@ -22,7 +22,7 @@ class ContactView(FormView):
     def get_success_url(self):
         return reverse_lazy('homeview')
 
-
+#### Create view using generic view ####
 from django.views.generic import CreateView
 
 class PostCreateView(CreateView):
@@ -36,6 +36,16 @@ class PostCreateView(CreateView):
         return super().form_valid(form)
     def get_success_url(self):
         return reverse_lazy('posts')
+
+##### Edit using generic view ####
+from django.views.generic import UpdateView
+class PostEditView(UpdateView):
+    model=Post
+    form_class=PostForm
+    template_name='tuition/postcreate.html'
+    def get_success_url(self):
+        id= self.object.id
+        return reverse_lazy('tuition:postdetail', kwargs={'pk':id})
 
 ##### CLASS BASED VIEWS #####
 # class ContactView(View):
@@ -69,7 +79,7 @@ def contact(request):
             # obj = Contact(name=name, phone=phone, content=content)
             # obj.save()
     else:
-        form = ContactForm()    
+        form = ContactForm()  
 
 
     return render(request, 'contact2.html',{'form':form})
@@ -94,7 +104,8 @@ from django.views.generic import ListView
 class PostListView(ListView):
     template_name = 'tuition/postlist.html'
     # model = Post
-    queryset = Post.objects.filter(user=1)
+    # queryset = Post.objects.filter(user=1)
+    queryset = Post.objects.all()
     context_object_name = 'posts'
 
     def get_context_data(self, *args, **kwargs):

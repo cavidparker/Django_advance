@@ -16,7 +16,7 @@
     <title>Hello, world!</title>
   </head>
   {% block content %}
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-white bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Tution</a>
       <button
@@ -36,10 +36,16 @@
             <a
               class="nav-link active"
               aria-current="page"
-              href="{% url 'homeview' %}">Home</a>
+              href="{% url 'homeview' %}"
+              >Home</a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tuition/contact/">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/">Admin</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -48,18 +54,18 @@
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
+              aria-expanded="false"
+            >
+              Post
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <a class="dropdown-item" href="/tuition/postlist/">View</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/tuition/create/">Create</a>
+              </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -67,7 +73,8 @@
             class="form-control me-2"
             type="search"
             placeholder="Search"
-            aria-label="Search"/>
+            aria-label="Search"
+          />
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

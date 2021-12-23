@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import contact, postview,postcreate,subview,classview,ContactView, PostCreateView,PostListView,PostDetailView
+from .views import contact, postview,postcreate,subview,classview,ContactView, PostCreateView,PostListView,PostDetailView,PostEditView
 from .forms import ContactFormthree
 
 
@@ -11,6 +11,8 @@ urlpatterns = [
     path('posts/',postview,name="posts"),
     path('postlist/',PostListView.as_view(),name="postlist"),
     path('postdetail/<int:pk>/',PostDetailView.as_view(),name="postdetail"),
+    path('edit/<int:pk>/',PostEditView.as_view(),name="edit"),
+
 
 
 

@@ -2,17 +2,19 @@
 
 {% block body %}
 {% load crispy_forms_tags %}
-
-<h1>Contact Please</h1>
 <div class="container">
-    <form method="post">{% csrf_token %}
-
-                {{form | crispy}}    
-<br>
-      <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
+  <div class="col-md-6 offset-md-3">
+    <h1 class="text-center">Contact Please</h1>
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
 
-{% endblock body %}
 
+{% endblock body %}

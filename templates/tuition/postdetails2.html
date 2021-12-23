@@ -1,0 +1,44 @@
+{% extends 'basic.html' %}
+
+
+{% block body %}
+
+<style>
+    .same-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+</style>
+<h1 class="text-center mt-5 mb-5">Post Detail</h1>
+<div class="container same-line">
+
+    <div class="col-md-3" style="text-align: right;
+    padding-right: 21px;">
+        <img src="{{object.image.url}}" alt="" style="width:150px; height:150px;" class="rounded-circle img-thumbnail">
+    </div>
+    <!-- <div class="col-md-6 offset-md-2"> -->
+    <div class="col-md-9 p-5 border">
+
+        <div>
+            <!-- {{msg}}<br> -->
+            Title = {{object.title}} <br>
+            Details = {{object.details}} <br>
+
+            Subject = {% for s in object.subject.all %}
+            {{s.name}},
+            {% endfor %}<br>
+            Class = {% for c in object.class_in.all %}
+            {{c.name}},
+            {% endfor %}<br>
+
+            category = {{object.category}} <br>
+            salary = {{object.salary}} <br>
+            email = {{object.email}} <br>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

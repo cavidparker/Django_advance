@@ -1,14 +1,19 @@
 {% extends 'basic.html' %}
 
 {% block body %}
-{{msg}} <br><br>
-{% for p in posts %}
-{{p.title}} by {{p.user.username}}: <a href="/tuition/postdetail/{{p.id}}">Details</a> <hr>
-<!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
-{{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
+<div class="container">
+    <h1 class="text-center">{{msg}}</h1><br><br>
+    {% for p in posts %}
+    <div class="col-md-6 offset-md-3 mb-3 p-3 border">
+        <h6>{{p.title}}
+            by {{p.user.username}}</h6>
+        <!-- <h6>Details: {{p.details}}</h6> -->
 
+        <a href="/tuition/postdetail/{{p.id}}">Details</a>
+        <hr>
+        <!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
+        {{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
+    </div>
+    {% endfor %}
 
-
-{% endfor %}
-
-{% endblock body %}
+    {% endblock body %}

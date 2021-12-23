@@ -33,7 +33,7 @@ class HomeView(TemplateView):
     template_name = 'home.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['name'] = ['John', 'Jane', 'Joe', 'max']
-        context['msg'] = 'welcome to home page'
+        context['msg'] = 'This is home page'
+        context['msg2'] = 'welcome to home page'
 
         return context
