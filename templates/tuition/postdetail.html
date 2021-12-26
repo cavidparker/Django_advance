@@ -13,9 +13,7 @@
         <!-- {{msg}}<br> -->
         Title = {{object.title}} <br>
 
-        {% if request.user == object.user %}
-        <a href="/tuition/edit/{{object.id}}">Edit</a><br>
-        {% endif %}
+        
 
 
         Email = {{object.email}} <br>
@@ -34,6 +32,12 @@
         Salary = {{object.salary}} <br>
         Medium = {{object.medium}} <br>
         Created_at = {{object.created_at}} <br>
+
+        {% if request.user == object.user %}
+        <a href="/tuition/edit/{{object.id}}">Edit</a><br>
+        <a href="/tuition/delete/{{object.id}}">Delete</a><br>
+
+        {% endif %}
 
 
 

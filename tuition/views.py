@@ -44,8 +44,17 @@ class PostEditView(UpdateView):
     form_class=PostForm
     template_name='tuition/postcreate.html'
     def get_success_url(self):
-        id= self.object.id
-        return reverse_lazy('tuition:postdetail', kwargs={'pk':id})
+        id = self.object.id
+        return reverse_lazy('postdetail', kwargs={'pk': id})
+### Delete using generic view ###
+from django.views.generic import DeleteView
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'tuition/delete.html'
+    success_url = reverse_lazy('postlist')
+
+
+
 
 ##### CLASS BASED VIEWS #####
 # class ContactView(View):
