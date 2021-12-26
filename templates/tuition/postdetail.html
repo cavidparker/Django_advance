@@ -1,5 +1,5 @@
 {% extends 'basic.html' %}
-
+{% load humanize %}
 
 {% block body %}
 <div class="container">
@@ -13,7 +13,7 @@
         <!-- {{msg}}<br> -->
         Title = {{object.title}} <br>
 
-        
+        br: {{object.user.username}} at {{object.created_at | naturaltime}}<br>
 
 
         Email = {{object.email}} <br>

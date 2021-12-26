@@ -1,27 +1,20 @@
-<!-- {% extends 'basic.html' %}
+{% extends 'basic.html' %}
 
 {% block body %}
-
-<h1>Contact Please</h1>
+{% load crispy_forms_tags %}
 <div class="container">
-    <form method="post">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="text-center">Contact Please</h1>
+    <div class="container">
+      <form method="post">
         {% csrf_token %}
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name" name = "name">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Phone</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Phone" name = "phone">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Details</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your content" name = "content">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
+        {{form | crispy}}
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
 
+
 {% endblock body %}
- -->
