@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tuition',
     'crispy_forms', # for bootstrap design added (pip install django-crispy-forms)
     'multiselectfield', # for select multiple field (pip install django-multiselectfield)
+    'session',
     ]
 
 MIDDLEWARE = [

@@ -1,11 +1,13 @@
 from django.urls import path
-from .views import contact, postview,postcreate,subview,classview,ContactView, PostCreateView,PostListView,PostDetailView,PostEditView,PostDeleteView,search
+from .views import contact, postview,postcreate,subview,classview,ContactView, PostCreateView,PostListView,PostDetailView,PostEditView,PostDeleteView,search,filter
 from .forms import ContactFormthree
 
 
 urlpatterns = [
     # path('contact/',contact,name="contact"),
     path('search/',search,name="search"),
+    path('filter/',filter,name="filter"),
+
 
     path('contact/',ContactView.as_view(),name="contact"),
    # path('contact_classbased3/',ContactView.as_view(form_class=ContactFormthree, template_name= "contact3.html"),name="contact_classbased3"),

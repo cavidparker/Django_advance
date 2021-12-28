@@ -27,4 +27,5 @@ urlpatterns = [
     path('', HomeView.as_view(), name = 'homeview'),
     # path('contact/',contact, name="contact"),
     path('tuition/', include('tuition.urls')),
+    path('session/', include('session.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

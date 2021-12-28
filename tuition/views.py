@@ -138,9 +138,28 @@ class PostListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['posts'] = context.get('object_list')
+        context['subjects'] = Subject.objects.all() 
+        context['classes'] = Class_in.objects.all()
         context['msg'] = 'This is post list'
         return context
 
+#### Advance filter ####
+def filter(request):
+    subject = request.POST['subject']
+    class_in = request.POST['class_in']
+    print(subject, class_in)
+    if subject or class_in:
+        queryset = Q(subject__name__icontains=subject) | Q(class_in__name__icontains=class_in)
+        results = Post.objects.filter(queryset).distinct()
+    else:
+        results = []
+    context = {
+        'results': results,
+    }
+    return render(request, 'tuition/search.html', context)    
+
+
+#### Post view ###
 def postview(request):
     post = Post.objects.all()
     return render(request, 'tuition/postview.html', {'post':post})

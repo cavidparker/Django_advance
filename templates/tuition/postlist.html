@@ -2,18 +2,69 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="text-center">{{msg}}</h1><br><br>
-    {% for p in posts %}
-    <div class="col-md-6 offset-md-3 mb-3 p-3 border">
-        <h6>{{p.title}}
-            by {{p.user.username}}</h6>
-        <!-- <h6>Details: {{p.details}}</h6> -->
+    <div class="col-md-6">
+        <h1> Filter Data </h1>
+        <form action=" /tuition/filter/" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <select class="form-select" id="inputGroupSelect02" name='subject'>
+                    <option></option>
+                    {% for i in subjects %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                <label class="input-group-text" for="inputGroupSelect02">Subjects</label>
+            </div>
 
-        <a href="/tuition/postdetail/{{p.id}}">Details</a>
-        <hr>
-        <!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
-        {{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
+            <div class="input-group mb-3">
+                <select class="form-select" id="inputGroupSelect02" name='class_in'>
+                    <option></option>
+                    {% for i in classes %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text" for="inputGroupSelect02">Class</label>
+                </div>
+            </div>
     </div>
-    {% endfor %}
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Salary From</label>
+                <input type="number" class="form-control" name="salary_from" id="exampleFormControlInput1">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Salary to</label>
+                <input type="number" class="form-control" name="salary_to" id="exampleFormControlInput1">
+            </div>
+        </div>
+    </div>
 
-    {% endblock body %}
+
+
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="available">
+        <label class="form-check-label" for="exampleCheck1">Only Available</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filter Posts</button>
+    </form>
+</div>
+<h1 class=" text-center">{{msg}}</h1><br><br>
+{% for p in posts %}
+<div class="col-md-6 offset-md-3 mb-3 p-3 border">
+    <h6>{{p.title}}
+        by {{p.user.username}}</h6>
+    <!-- <h6>Details: {{p.details}}</h6> -->
+
+    <a href="/tuition/postdetail/{{p.id}}">Details</a>
+    <hr>
+    <!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
+        {{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->
+</div>
+{% endfor %}
+
+{% endblock body %}
