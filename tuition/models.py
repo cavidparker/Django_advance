@@ -11,7 +11,7 @@ from PIL import Image
 from multiselectfield import MultiSelectField
 
 ### make multiple user using user model
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 
 
 

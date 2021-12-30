@@ -53,9 +53,32 @@
           <a class="nav-link" href="">{% now "D jS F Y" %}</a>
         </li>
         {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="btn btn-warning ml-2" href="/session/logout">Logout</a>
+
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{user.username}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+              <a class="dropdown-item" href="/session/ownerprofile/">Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/session/logout/">Logout</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/session/password/">Change Password</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/session/userpro/">Create Profile</a>
+            </li>
+          </ul>
         </li>
+
+
+       
         {% else %}
         <li class="nav-item">
           <a class="btn btn-primary ml-2" href="/session/login/">Login</a>
