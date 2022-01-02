@@ -53,6 +53,11 @@
     <button type="submit" class="btn btn-primary">Filter Posts</button>
     </form>
 </div>
+
+
+
+
+
 <h1 class=" text-center">{{msg}}</h1><br><br>
 {% for p in posts %}
 <div class="col-md-6 offset-md-3 mb-3 p-3 border">
@@ -60,7 +65,10 @@
         by {{p.user.username}}</h6>
     <!-- <h6>Details: {{p.details}}</h6> -->
 
-    <a href="/tuition/postdetail/{{p.id}}">Details</a>
+
+    Details : {{p.details_short}}
+    {% comment %} Details: {{p.details}} {% endcomment %}
+    <a href="/tuition/postdetail/{{p.id}}">...Read More</a>
     <hr>
     <!-- {{p.email}} : <a href="/tuition/emaildetails/{{p.slug}}">Details</a> <hr>
         {{p.subject}} : <a href="/tuition/subjectdetails/{{p.slug}}">Details</a> <hr> -->

@@ -11,7 +11,8 @@
     <div class="col-md-6 offset-md-3 p-5 border">
 
         <!-- {{msg}}<br> -->
-        Title = {{object.title}} <br>
+        Title = {{object.ProperCase}}<br>
+        {% comment %} Title = {{object.title}} <br> {% endcomment %}
 
         br: {{object.user.username}} at {{object.created_at | naturaltime}}<br>
 
@@ -20,12 +21,16 @@
         Details = {{object.details}} <br>
         Available = {% if object.available %} Yes {% else %} No{% endif %} <br>
 
-        Subject = {% for s in object.subject.all %}
-        {{s.name}},
-        {% endfor %}<br>
-        Class = {% for c in object.class_in.all %}
+
+        Subject = {{ object.get_subject_list }}<br>
+        {% comment %} Subject = {% for s in object.subject.all %}
+        {{s.name}}
+        {% endfor %}<br> {% endcomment %}
+
+        Class = {{object.get_class_list}}<br>
+        {% comment %} Class = {% for c in object.class_in.all %}
         {{c.name}},
-        {% endfor %}<br>
+        {% endfor %}<br> {% endcomment %}
 
 
         Category = {{object.category}} <br>

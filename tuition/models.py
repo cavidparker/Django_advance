@@ -78,3 +78,36 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title + " by " + self.user.username
+
+    ### custom model to change logic :
+    ## subject 
+    def get_subject_list(self):
+        sub = self.subject.all()
+        subjects=""
+        for s in sub:
+            subjects=subjects + str(s.name) + ", "
+            subjects = subjects.upper()
+        return subjects
+
+    ## class_in
+    def get_class_list(self):
+        clss = self.class_in.all()
+        classes=""
+        for c in clss:
+            classes = classes +str(c.name) + ", "
+            classes = classes.upper()
+        return classes
+    ## title 
+    def ProperCase(self):
+        return self.title.title()
+    ## details
+    def details_short(self):
+        details_words = self.details.split(' ')
+        if len(details_words)> 10:
+            return ' ' .join(details_words[:10]) + ' ...'
+        else:
+            return self.details    
+
+
+
+
