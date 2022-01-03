@@ -1,0 +1,15 @@
+{
+    "name": "cavid",
+    "email": "cavid@gmail.com",
+    "is_active": true,
+    "age": 26,
+    "is_null": null,
+    "education": [
+        {
+            "Institude name": "BUTE"
+        },
+        {
+            "Institude name": "EWU"
+        }
+    ]
+}
